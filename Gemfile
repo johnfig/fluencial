@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+ruby '2.1.2'
 
 gem 'rails', '4.2.0'
 gem 'pg'
@@ -11,6 +12,10 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'puma'
+
+group :production do
+  gem 'rails_12factor', group: :production
+end
 
 group :development, :test do
   gem 'rspec', '~> 3.0.0'
