@@ -12,8 +12,14 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 group :development, :test do
-  gem 'byebug'
-  gem 'web-console', '~> 2.0'
-  gem 'spring'
+  gem 'rspec', '~> 3.0.0'
+  gem 'factory_girl_rails', :require => false
+  gem 'rspec-rails', '~> 3.0.0'
+  gem 'pry', '~> 0.10.0'
 end
 
+group :test do
+  gem 'webmock', require: true
+  gem 'vcr'
+  gem 'database_cleaner', '~> 1.3.0'
+end
