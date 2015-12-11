@@ -18,11 +18,15 @@ group :production do
   gem 'rails_12factor', group: :production
 end
 
+group :development do
+  gem 'spring'
+  gem 'pry', '~> 0.10.0'
+end
+
 group :development, :test do
   gem 'rspec', '~> 3.0.0'
   gem 'factory_girl_rails', :require => false
   gem 'rspec-rails', '~> 3.0.0'
-  gem 'pry', '~> 0.10.0'
 end
 
 group :test do
