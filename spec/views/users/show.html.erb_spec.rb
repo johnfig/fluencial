@@ -7,7 +7,7 @@ RSpec.describe "users/show", :type => :view do
       :password => "Password",
       :first_name => "First Name",
       :last_name => "Last Name",
-      :encypted_password => "Encypted Password",
+      :encrypted_password => "Encrypted Password",
       :salt => "Salt",
       :roles => "Roles",
       :instagram_username => "Instagram Username",
@@ -22,7 +22,7 @@ RSpec.describe "users/show", :type => :view do
     expect(rendered).to match(/Password/)
     expect(rendered).to match(/First Name/)
     expect(rendered).to match(/Last Name/)
-    expect(rendered).to match(/Encypted Password/)
+    expect(rendered).to match(/Encrypted Password/)
     expect(rendered).to match(/Salt/)
     expect(rendered).to match(/Roles/)
     expect(rendered).to match(/Instagram Username/)

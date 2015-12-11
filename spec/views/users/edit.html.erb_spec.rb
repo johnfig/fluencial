@@ -7,7 +7,7 @@ RSpec.describe "users/edit", :type => :view do
       :password => "MyString",
       :first_name => "MyString",
       :last_name => "MyString",
-      :encypted_password => "MyString",
+      :encrypted_password => "MyString",
       :salt => "MyString",
       :roles => "MyString",
       :instagram_username => "MyString",
@@ -28,12 +28,6 @@ RSpec.describe "users/edit", :type => :view do
       assert_select "input#user_first_name[name=?]", "user[first_name]"
 
       assert_select "input#user_last_name[name=?]", "user[last_name]"
-
-      assert_select "input#user_encypted_password[name=?]", "user[encypted_password]"
-
-      assert_select "input#user_salt[name=?]", "user[salt]"
-
-      assert_select "input#user_roles[name=?]", "user[roles]"
 
       assert_select "input#user_instagram_username[name=?]", "user[instagram_username]"
 

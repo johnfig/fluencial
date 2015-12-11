@@ -2,7 +2,6 @@ require 'rails_helper'
 
 
 describe UsersController do
-
   let(:valid_attributes) {
     {
       email: 'test@example.com',

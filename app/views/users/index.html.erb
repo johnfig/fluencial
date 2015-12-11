@@ -9,7 +9,7 @@
       <th>Password</th>
       <th>First name</th>
       <th>Last name</th>
-      <th>Encypted password</th>
+      <th>Encrypted password</th>
       <th>Salt</th>
       <th>Roles</th>
       <th>Instagram username</th>
@@ -23,12 +23,8 @@
     <% @users.each do |user| %>
       <tr>
         <td><%= user.email %></td>
-        <td><%= user.password %></td>
         <td><%= user.first_name %></td>
         <td><%= user.last_name %></td>
-        <td><%= user.encypted_password %></td>
-        <td><%= user.salt %></td>
-        <td><%= user.roles %></td>
         <td><%= user.instagram_username %></td>
         <td><%= user.company_name %></td>
         <td><%= user.company_url %></td>
