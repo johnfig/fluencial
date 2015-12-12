@@ -16,8 +16,10 @@ describe SessionsController do
       it 'authenticats the user, sets the session and redirects to root_path' do
         expect(subject).to redirect_to root_path
         expect(flash[:notice]).to eq 'Welcome back!'
+        expect(session[:user_id]).to eq user.id
       end
     end
+
     describe 'failed login' do
       subject { post :create, session: { email: 'asdf', password: 'password' } }
       it 'returns to new and flashes error' do

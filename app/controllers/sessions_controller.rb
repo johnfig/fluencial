@@ -3,8 +3,9 @@ class SessionsController < ApplicationController
   end
 
   def create
-    if User.authenticate(param[:email], param[:password])
+    if user = User.authenticate(param[:email], param[:password])
       flash[:notice] = 'Welcome back!'
+      log_in user
       redirect_to root_path
     else
       flash[:danger] = 'Invalid email/password combination'
@@ -12,7 +13,9 @@ class SessionsController < ApplicationController
     end
   end
 
-  def update
+  def destroy
+    log_out
+    redirect_to root_url
   end
 
   private

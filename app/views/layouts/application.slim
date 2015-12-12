@@ -9,11 +9,8 @@ html
     header.navbar.navbar-inverse
       .container
         .l--content
-          = link_to 'Fluencial', root_path, id: 'logo'
-          nav
-            ul.nav.navbar-nav.navbar-right
-              li= link_to 'Log in', login_path
-              li= link_to 'Sign up', signup_path
+          = render partial: 'layouts/header'
+
     .container
       = yield
 
