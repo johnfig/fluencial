@@ -1,6 +1,7 @@
+ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
-require 'database_cleaner'
 require 'rspec/rails'
+require 'database_cleaner'
 require 'factory_girl_rails'
 require 'vcr'
 require 'webmock/rspec'

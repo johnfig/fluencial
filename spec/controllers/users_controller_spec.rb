@@ -50,8 +50,17 @@ describe UsersController do
   describe "GET edit" do
     it "assigns the requested user as @user" do
       user = User.create! valid_attributes
+      session[:user_id] = user.id
       get :edit, {:id => user.to_param}, valid_session
       expect(assigns(:user)).to eq(user)
+    end
+
+    describe 'if user is not correct user' do
+      let(:user) { FactoryGirl.create :user }
+      subject { get :edit, {:id => user.to_param}, valid_session }
+      it 'redirects them to the root_path' do
+        expect(subject).to redirect_to root_path
+      end
     end
   end
 
@@ -82,6 +91,7 @@ describe UsersController do
 
       it "updates the requested user" do
         user = User.create! valid_attributes
+        session[:user_id] = user.id
         put :update, {:id => user.to_param, :user => new_attributes}, valid_session
         expect(user.reload.first_name).to eq 'John'
       end
@@ -94,8 +104,17 @@ describe UsersController do
 
       it "redirects to the user" do
         user = User.create! valid_attributes
+        session[:user_id] = user.id
         put :update, {:id => user.to_param, :user => valid_attributes}, valid_session
         expect(response).to redirect_to(user)
+      end
+
+      describe 'if user is not correct user' do
+        let(:user) { FactoryGirl.create :user }
+        subject { put :update, {:id => user.to_param, :user => valid_attributes}, valid_session }
+        it 'redirects them to the root_path' do
+          expect(subject).to redirect_to root_path
+        end
       end
     end
 
