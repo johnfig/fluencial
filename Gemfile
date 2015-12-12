@@ -15,6 +15,7 @@ gem 'puma'
 gem 'slim'
 gem 'bcrypt-ruby', :require => 'bcrypt'
 gem 'awesome_print'
+gem 'bootstrap-sass', '~> 3.3.6'
 
 group :production do
   gem 'rails_12factor', group: :production
