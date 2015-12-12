@@ -28,7 +28,7 @@ describe "users/index" do
         :company_url => "Company Url"
       )
     ])
-    view.stub(:current_path) { '' }
+    allow(view).to receive(:current_path).and_return('')
     render template: 'users/index', layout: 'layouts/application'
     rendered
   end

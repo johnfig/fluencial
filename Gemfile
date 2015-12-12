@@ -27,9 +27,9 @@ group :development do
 end
 
 group :development, :test do
-  gem 'rspec', '~> 3.0.0'
+  gem 'rspec', '~> 3.1'
   gem 'factory_girl_rails', :require => false
-  gem 'rspec-rails', '~> 3.0.0'
+  gem 'rspec-rails', '~> 3.1'
 end
 
 group :test do
