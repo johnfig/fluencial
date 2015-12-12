@@ -11,5 +11,32 @@
  * file per style scope.
 
 // "bootstrap-sprockets"
-@import "bootstrap-sprockets"
-@import "bootstrap"
+@import 'bootstrap-sprockets'
+@import 'bootstrap'
+@import 'navbar'
+@import 'homepage'
+
+$deep-gray: #3C6575
+$fog: #f2f2f2
+
+body
+  text-align: center
+
+.container
+  width: 100%
+  padding: 0
+
+.l--content
+  width: 1000px
+  margin: 0 auto
+  text-align: center
+
+.l--regular
+  width: 100%
+  padding: 20px
+
+.brand-color
+  background-color: $deep-gray
+
+.fog
+  background-color: $fog

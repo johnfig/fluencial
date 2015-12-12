@@ -1,0 +1,19 @@
+doctype html
+html
+  head
+    meta content=("text/html; charset=UTF-8") http-equiv="Content-Type"
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  body
+    header.navbar.navbar-inverse
+      .container
+        .l--content
+          = link_to 'Fluencial', root_path, id: 'logo'
+          nav
+            ul.nav.navbar-nav.navbar-right
+              li= link_to 'Log in', login_path
+              li= link_to 'Sign up', signup_path
+    .container
+      = yield
+
