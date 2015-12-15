@@ -23,10 +23,10 @@
       .user-container
         = image_tag user.profile_picture_url
         br
-        = "First Name: #{user.first_name}"
+        = "Name: #{user.full_name}"
         br
-        = "Last Name: #{user.last_name}"
+        = "Instagram username: #{user.instagram_username}"
         br
-        = "Instagram name: #{user.instagram_username}"
+        = "Followers: #{user.followed_by}"
         br
 

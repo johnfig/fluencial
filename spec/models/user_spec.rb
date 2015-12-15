@@ -17,7 +17,7 @@ describe User do
     end
   end
 
-  describe 'is_advertiser?' do
+  describe '#is_advertiser?' do
     it 'returns true if advertiser' do
       user = FactoryGirl.create :user, roles: ['advertiser']
       expect(user.is_advertiser?).to eq true
@@ -29,7 +29,7 @@ describe User do
     end
   end
 
-  describe 'is_influencer?' do
+  describe '#is_influencer?' do
     it 'returns true if influencer' do
       user = FactoryGirl.create :user, roles: ['influencer']
       expect(user.is_influencer?).to eq true
@@ -40,4 +40,12 @@ describe User do
       expect(user.is_influencer?).to eq false
     end
   end
+
+  describe '#full_name' do
+    it 'returns true if influencer' do
+      user = FactoryGirl.create :user
+      expect(user.full_name).to eq 'Mario Pipes'
+    end
+  end
 end
+

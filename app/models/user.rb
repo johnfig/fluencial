@@ -12,11 +12,15 @@ class User < ActiveRecord::Base
   end
 
   def is_advertiser?
-    self.roles.include? 'advertiser'
+    roles.include? 'advertiser'
   end
 
   def is_influencer?
-    self.roles.include? 'influencer'
+    roles.include? 'influencer'
+  end
+
+  def full_name
+    "#{first_name} #{last_name}"
   end
 
   private
