@@ -1,4 +1,6 @@
 Rails.application.configure do
+  config.client_id = '67963d7b1ccd4cc493d85eb144a785ee'
+  config.client_secret = '36a9d68abb724883accc8bf478a98117'
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on

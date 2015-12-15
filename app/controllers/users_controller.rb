@@ -32,6 +32,17 @@ class UsersController < ApplicationController
     end
   end
 
+  def instagram_create
+    authenticate_instagram_user unless session[:access_token]
+    if @user = get_user_info
+      log_in @user
+      flash[:notice] = 'You successfully logged in with Instagram!'
+      redirect_to root_path
+    else
+      flash[:destroy] = 'This was not the correct login information'
+    end
+  end
+
   def update
     respond_to do |format|
       if @user.update(user_params)
@@ -64,5 +75,51 @@ class UsersController < ApplicationController
   def correct_user
     @user = User.find(params[:id])
     redirect_to(root_url) unless @user == current_user
+  end
+
+  def access_token
+    session[:access_token] ||= @access_token
+  end
+
+  def authenticate_instagram_user
+    begin
+      url = 'https://api.instagram.com/oauth/access_token'
+      response = HTTParty.post(url, body: default_options, timeout: 5)
+      @access_token = response['access_token']
+    rescue Timeout::Error
+      {}
+    end
+  end
+
+  def get_user_info
+    url = "https://api.instagram.com/v1/users/self/?access_token=#{access_token}"
+    response = HTTParty.get(url)
+    create_instagram_user(response)
+  end
+
+  def create_instagram_user(user_data)
+    user = User.new
+    user.instagram_username = user_data['data']['username']
+    user.bio = user_data['data']['bio']
+    user.personal_website = user_data['data']['website']
+    user.profile_picture_url = user_data['data']['profile_picture']
+    user.first_name = user_data['data']['full_name'].split(' ').first
+    user.last_name = user_data['data']['full_name'].split(' ').last
+    user.posts = user_data['data']['counts']['media']
+    user.followed_by = user_data['data']['counts']['followed_by']
+    user.follows = user_data['data']['counts']['follows']
+    user.instagram_id = user_data['data']['id']
+    user.save
+    user
+  end
+
+  def default_options
+    {
+      client_id: Rails.application.config.client_id,
+      client_secret: Rails.application.config.client_secret,
+      grant_type: 'authorization_code',
+      code: params[:code],
+      redirect_uri: 'http://localhost:3000/instagram-signup'
+    }
   end
 end
