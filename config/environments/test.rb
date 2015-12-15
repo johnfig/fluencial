@@ -1,4 +1,7 @@
 Rails.application.configure do
+  config.client_id = 'fake_client_id'
+  config.client_secret = 'fake_client_secret'
+  config.domain = 'http://test.localhost:3000'
   # Settings specified here will take precedence over those in config/application.rb.
 
   # The test environment is used exclusively to run your application's

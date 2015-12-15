@@ -119,7 +119,7 @@ class UsersController < ApplicationController
       client_secret: Rails.application.config.client_secret,
       grant_type: 'authorization_code',
       code: params[:code],
-      redirect_uri: 'http://localhost:3000/instagram-signup'
+      redirect_uri: "#{Rails.application.config.domain}/instagram-signup"
     }
   end
 end
