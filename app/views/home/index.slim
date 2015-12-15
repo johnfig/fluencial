@@ -14,7 +14,7 @@
     h1 What do we do?
     h1 What do we do?
     h1 What do we do?
-    = link_to 'instagram signup', 'https://api.instagram.com/oauth/authorize?client_id=67963d7b1ccd4cc493d85eb144a785ee&redirect_uri=http://localhost:3000/instagram-signup&response_type=code'
+    = link_to 'instagram signup', "https://api.instagram.com/oauth/authorize?client_id=67963d7b1ccd4cc493d85eb144a785ee&redirect_uri=#{Rails.application.config.domain}/instagram-signup&response_type=code"
   .l--regular.top-users
     h1 Top Users
     - @top_users.each do |user|
