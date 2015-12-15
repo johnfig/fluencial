@@ -14,14 +14,14 @@ feature 'registration page' do
     fill_in_signup_form
     click_button 'Sign up'
     expect(User.last.email).to eq 'mario@pipes.com'
+    expect(User.last.roles).to eq ['advertiser']
   end
 
   def fill_in_signup_form
-    fill_in 'Email', with: 'mario@pipes.com'
-    fill_in 'Password', with: 'password'
     fill_in 'First name', with: 'mario'
     fill_in 'Last name', with: 'pipes'
-    fill_in 'Instagram username', with: 'mariopipes'
+    fill_in 'Email', with: 'mario@pipes.com'
+    fill_in 'Password', with: 'password'
     fill_in 'Company name', with: 'fluencial'
     fill_in 'Company url', with: 'fluencial.co'
   end

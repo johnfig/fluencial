@@ -19,6 +19,8 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user.roles = []
+    @user.roles << user_params[:roles]
 
     respond_to do |format|
       if @user.save
@@ -69,7 +71,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:email, :password, :first_name, :last_name, :instagram_username, :company_name, :company_url)
+    params.require(:user).permit(:email, :password, :first_name, :last_name, :company_name, :company_url, :roles)
   end
 
   def correct_user

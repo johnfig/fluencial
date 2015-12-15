@@ -24,13 +24,13 @@ end
 
 group :development do
   gem 'spring'
-  gem 'pry', '~> 0.10.0'
 end
 
 group :development, :test do
   gem 'rspec', '~> 3.1'
   gem 'factory_girl_rails', :require => false
   gem 'rspec-rails', '~> 3.1'
+  gem 'pry', '~> 0.10.0'
 end
 
 group :test do

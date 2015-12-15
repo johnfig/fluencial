@@ -11,6 +11,14 @@ class User < ActiveRecord::Base
     encrypted_password == BCrypt::Engine.hash_secret(login_password, salt)
   end
 
+  def is_advertiser?
+    self.roles.include? 'advertiser'
+  end
+
+  def is_influencer?
+    self.roles.include? 'influencer'
+  end
+
   private
 
   def encrypt_password

@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20151215045017) do
     t.string   "last_name"
     t.string   "encrypted_password"
     t.string   "salt"
-    t.string   "roles"
+    t.string   "roles",                            array: true
     t.string   "instagram_username"
     t.string   "company_name"
     t.string   "company_url"

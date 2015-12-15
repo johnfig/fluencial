@@ -16,4 +16,28 @@ describe User do
       expect(User.authenticate(user.email, 'password')).to eq user
     end
   end
+
+  describe 'is_advertiser?' do
+    it 'returns true if advertiser' do
+      user = FactoryGirl.create :user, roles: ['advertiser']
+      expect(user.is_advertiser?).to eq true
+    end
+
+    it 'returns false if not advertiser' do
+      user = FactoryGirl.create :user, roles: ['blah blah']
+      expect(user.is_advertiser?).to eq false
+    end
+  end
+
+  describe 'is_influencer?' do
+    it 'returns true if influencer' do
+      user = FactoryGirl.create :user, roles: ['influencer']
+      expect(user.is_influencer?).to eq true
+    end
+
+    it 'returns false if not influencer' do
+      user = FactoryGirl.create :user, roles: ['blah blah']
+      expect(user.is_influencer?).to eq false
+    end
+  end
 end
