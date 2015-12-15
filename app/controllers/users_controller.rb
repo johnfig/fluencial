@@ -111,7 +111,8 @@ class UsersController < ApplicationController
     user.followed_by = user_data['data']['counts']['followed_by']
     user.follows = user_data['data']['counts']['follows']
     user.instagram_id = user_data['data']['id']
-    user.roles = ['influencer']
+    user.roles = []
+    user.roles << 'influencer'
     user.save
     user
   end
