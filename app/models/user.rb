@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
   before_save :encrypt_password
   after_save :clear_password
 
+  has_many :posts
+
   def self.authenticate(email, login_password)
     user = User.find_by(email: email)
     user if user && user.match_password(login_password)

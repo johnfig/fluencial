@@ -3,8 +3,20 @@ namespace :photo_import do
   task :import => [:environment] do
     User.find_each do |user|
       response = get_photos(user.access_token)
-      byebug
-      next if 'no valid access token'
+      next if response == 'no valid access token'
+      response['data'].each do |post_data|
+        post = Post.where(instagram_id: post_data['id']).first || Post.new
+        post.user_id = user.id
+        post.instagram_id = post_data['id']
+        post.instagram_type = post_data['type']
+        post.name = post_data['text']
+        post.low_resolution_url = post_data['images']['low_resolution']['url']
+        post.standard_resolution_url = post_data['images']['standard_resolution']['url']
+        post.created_time = DateTime.strptime(post_data['created_time'], '%s')
+        post.likes_count = post_data['likes']['count']
+        post.comments_count = post_data['comments']['count']
+        post.save
+      end
     end
   end
 
