@@ -19,8 +19,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    @user.roles = []
-    @user.roles << user_params[:roles]
+    @user.assign_role(user_params[:roles])
 
     respond_to do |format|
       if @user.save
@@ -96,11 +95,17 @@ class UsersController < ApplicationController
   def get_user_info
     url = "https://api.instagram.com/v1/users/self/?access_token=#{access_token}"
     response = HTTParty.get(url)
-    create_instagram_user(response)
+    create_or_update_instagram_user(response)
   end
 
-  def create_instagram_user(user_data)
-    user = User.new
+  def create_or_update_instagram_user(user_data)
+    if User.where(instagram_id: user_data['data']['id']).empty?
+      user = User.new
+      user.instagram_id = user_data['data']['id']
+      user.assign_role('influencer')
+    else
+      user = User.where(instagram_id: user_data['data']['id']).first
+    end
     user.instagram_username = user_data['data']['username']
     user.bio = user_data['data']['bio']
     user.personal_website = user_data['data']['website']
@@ -110,9 +115,6 @@ class UsersController < ApplicationController
     user.posts = user_data['data']['counts']['media']
     user.followed_by = user_data['data']['counts']['followed_by']
     user.follows = user_data['data']['counts']['follows']
-    user.instagram_id = user_data['data']['id']
-    user.roles = []
-    user.roles << 'influencer'
     user.save
     user
   end

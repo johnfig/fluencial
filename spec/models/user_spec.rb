@@ -47,5 +47,20 @@ describe User do
       expect(user.full_name).to eq 'Mario Pipes'
     end
   end
+
+  describe '#assign_role' do
+    it 'assigns a role if no role exists' do
+      user = FactoryGirl.create :user
+      user.assign_role('influencer')
+      expect(user.roles).to eq ['influencer']
+    end
+
+    it 'adds another role if role exists' do
+      user = FactoryGirl.create :user
+      user.assign_role('influencer')
+      user.assign_role('admin')
+      expect(user.roles).to eq ['influencer', 'admin']
+    end
+  end
 end
 

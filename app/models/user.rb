@@ -23,6 +23,11 @@ class User < ActiveRecord::Base
     "#{first_name} #{last_name}"
   end
 
+  def assign_role(role)
+    self.roles ||= []
+    self.roles << role
+  end
+
   private
 
   def encrypt_password

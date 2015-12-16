@@ -31,6 +31,7 @@ group :development, :test do
   gem 'factory_girl_rails', :require => false
   gem 'rspec-rails', '~> 3.1'
   gem 'pry', '~> 0.10.0'
+  gem 'byebug', '~> 8.2', '>= 8.2.1'
 end
 
 group :test do
@@ -38,4 +39,5 @@ group :test do
   gem 'vcr'
   gem 'database_cleaner', '~> 1.3.0'
   gem 'capybara'
+  gem 'selenium-webdriver'
 end

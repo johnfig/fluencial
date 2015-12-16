@@ -17,6 +17,19 @@ feature 'registration page' do
     expect(User.last.roles).to eq ['advertiser']
   end
 
+  scenario 'user logs out after registration', :js do
+    visit signup_path
+    expect(page.current_path).to eq '/signup'
+    fill_in_signup_form
+    click_button 'Sign up'
+    expect(User.last.email).to eq 'mario@pipes.com'
+    expect(User.last.roles).to eq ['advertiser']
+    expect(page.find('.dropdown-toggle')).to have_content 'Account'
+    click_link 'Account'
+    click_link 'Log out'
+    expect(page.find('.navbar-nav')).to have_content 'Sign up'
+  end
+
   def fill_in_signup_form
     fill_in 'First name', with: 'mario'
     fill_in 'Last name', with: 'pipes'

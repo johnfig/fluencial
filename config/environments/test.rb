@@ -1,7 +1,11 @@
 Rails.application.configure do
-  config.client_id = 'fake_client_id'
-  config.client_secret = 'fake_client_secret'
-  config.domain = 'http://test.localhost:3000'
+  # config.client_id = 'fake_client_id'
+  # config.client_secret = 'fake_client_secret'
+  # config.domain = 'http://test.localhost:3000'
+
+  config.client_id = '67963d7b1ccd4cc493d85eb144a785ee'
+  config.client_secret = '36a9d68abb724883accc8bf478a98117'
+  config.domain = 'http://fluencial.co'
   # Settings specified here will take precedence over those in config/application.rb.
 
   # The test environment is used exclusively to run your application's
