@@ -112,7 +112,7 @@ class UsersController < ApplicationController
     user.profile_picture_url = user_data['data']['profile_picture']
     user.first_name = user_data['data']['full_name'].split(' ').first
     user.last_name = user_data['data']['full_name'].split(' ').last
-    user.posts = user_data['data']['counts']['media']
+    user.posts_count = user_data['data']['counts']['media']
     user.followed_by = user_data['data']['counts']['followed_by']
     user.follows = user_data['data']['counts']['follows']
     user.access_token = access_token
