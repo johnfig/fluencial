@@ -115,6 +115,7 @@ class UsersController < ApplicationController
     user.posts = user_data['data']['counts']['media']
     user.followed_by = user_data['data']['counts']['followed_by']
     user.follows = user_data['data']['counts']['follows']
+    user.access_token = access_token
     user.save
     user
   end

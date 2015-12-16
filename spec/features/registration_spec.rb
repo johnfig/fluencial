@@ -30,6 +30,11 @@ feature 'registration page' do
     expect(page.find('.navbar-nav')).to have_content 'Sign up'
   end
 
+  scenario 'user signs up with instagram' do
+    pending 'stop messing around and get this done'
+    fail
+  end
+
   def fill_in_signup_form
     fill_in 'First name', with: 'mario'
     fill_in 'Last name', with: 'pipes'
