@@ -9,7 +9,8 @@ namespace :photo_import do
         post.user_id = user.id
         post.instagram_id = post_data['id']
         post.instagram_type = post_data['type']
-        post.name = post_data['text']
+        post.name = post_data['caption']['text'] if post_data['caption']
+        post.thumbnail_url = post_data['images']['thumbnail']['url']
         post.low_resolution_url = post_data['images']['low_resolution']['url']
         post.standard_resolution_url = post_data['images']['standard_resolution']['url']
         post.created_time = DateTime.strptime(post_data['created_time'], '%s')

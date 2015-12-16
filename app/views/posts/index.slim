@@ -1,11 +1,12 @@
-.l--regular.fog
-  - @posts.each do |post|
-    .user-container
-      = image_tag post.standard_resolution_url
-      br
-      = "Name: #{post.name}"
-      br
-      = "Likes: #{post.likes_count}"
-      br
-      = "Comments: #{post.comments_count}"
-      br
+.post-wrapper
+  .l--regular.fog
+    - @posts.each do |post|
+      .post-container
+        = image_tag post.low_resolution_url, width: 240, height: 240
+        br
+        = "Name: #{post.name}"
+        br
+        = "Likes: #{post.likes_count}"
+        br
+        = "Comments: #{post.comments_count}"
+        br
