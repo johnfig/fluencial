@@ -1,7 +1,7 @@
 namespace :photo_import do
   desc 'Update all photo data of users with correct access tokens'
   task :import => [:environment] do
-    User.find_each do |user|
+    User.with_role('influencer').find_each do |user|
       response = get_photos(user.access_token)
       next if response == 'no valid access token'
       response['data'].each do |post_data|

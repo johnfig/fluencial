@@ -10,18 +10,13 @@ describe User do
     end
   end
 
-  describe 'validations' do
-    context 'email' do
-      it 'has presence validation' do
-        user = build :user, email: ''
-        expect(user.save).to eq false
-      end
-
-      it 'has uniqueness validation' do
-        user = build :user, email: 'test@test.com'
-        user2 = build :user, email: 'test@test.com'
-        expect(user.save).to eq true
-        expect(user2.save).to eq false
+  describe 'scopes' do
+    describe 'with_role' do
+      it 'returns array of only specific roles' do
+        influencer = create :user, :influencer
+        advertiser = create :user, :advertiser
+        expect(User.with_role('influencer')).to eq [influencer]
+        expect(User.with_role('advertiser')).to eq [advertiser]
       end
     end
   end

@@ -2,9 +2,9 @@ class User < ActiveRecord::Base
   before_save :encrypt_password
   after_save :clear_password
 
-  validates :email, presence: true, uniqueness: true
-
   has_many :posts
+
+  scope :with_role, lambda { |role| where('? = ANY(roles)', role) }
 
   def self.authenticate(email, login_password)
     user = User.find_by(email: email)
@@ -28,7 +28,6 @@ class User < ActiveRecord::Base
   end
 
   def assign_role(role)
-    self.roles ||= []
     self.roles << role
   end
 
