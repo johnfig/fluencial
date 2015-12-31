@@ -56,7 +56,7 @@ describe UsersController do
     end
 
     describe 'if user is not correct user' do
-      let(:user) { FactoryGirl.create :user }
+      let(:user) { create :user }
       subject { get :edit, {:id => user.to_param}, valid_session }
       it 'redirects them to the root_path' do
         expect(subject).to redirect_to root_path
@@ -110,7 +110,7 @@ describe UsersController do
       end
 
       describe 'if user is not correct user' do
-        let(:user) { FactoryGirl.create :user }
+        let(:user) { create :user }
         subject { put :update, {:id => user.to_param, :user => valid_attributes}, valid_session }
         it 'redirects them to the root_path' do
           expect(subject).to redirect_to root_path

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature 'registration page' do
   scenario 'logged in member who goes to registration page' do
-    user = FactoryGirl.create :user
+    user = create :user
     login_as(user)
     visit signup_path
     expect(page.current_path).to eq '/'

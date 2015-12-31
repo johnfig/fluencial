@@ -9,7 +9,7 @@ describe SessionsController do
   end
 
   describe '#create' do
-    let(:user) { FactoryGirl.create :user }
+    let(:user) { create :user }
     subject { post :create, session: { email: user.email, password: 'password' } }
 
     describe 'successful login' do

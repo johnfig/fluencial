@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe SessionsHelper do
-  let(:user) { FactoryGirl.create :user }
+  let(:user) { create :user }
 
   describe '#log_in' do
     it 'sets the session user_id' do

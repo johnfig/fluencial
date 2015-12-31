@@ -31,3 +31,11 @@ RSpec.configure do |config|
     DatabaseCleaner.strategy = :transaction
   end
 end
+
+def create(*args)
+  FactoryGirl.create(*args)
+end
+
+def build(*args)
+  FactoryGirl.build(*args)
+end
