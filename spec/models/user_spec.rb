@@ -11,12 +11,20 @@ describe User do
   end
 
   describe 'scopes' do
-    describe 'with_role' do
+    describe '.with_role' do
       it 'returns array of only specific roles' do
         influencer = create :user, :influencer
         advertiser = create :user, :advertiser
         expect(User.with_role('influencer')).to eq [influencer]
         expect(User.with_role('advertiser')).to eq [advertiser]
+      end
+    end
+
+    describe '.most_followed' do
+      it 'returns array of only specific roles' do
+        influencer1 = create :user, :influencer, followed_by: 1500
+        influencer2 = create :user, :influencer, followed_by: 2000
+        expect(User.most_followed).to eq [influencer2, influencer1]
       end
     end
   end

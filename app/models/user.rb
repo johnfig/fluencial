@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   has_many :posts
 
   scope :with_role, lambda { |role| where('? = ANY(roles)', role) }
+  scope :most_followed, -> { order('followed_by DESC') }
 
   def self.authenticate(email, login_password)
     user = User.find_by(email: email)
