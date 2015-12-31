@@ -7,7 +7,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :last_name
       t.string :encypted_password
       t.string :salt
-      t.string :roles, array: true
+      t.string :roles, array: true, default: []
       t.string :instagram_username
       t.string :company_name
       t.string :company_url

@@ -36,12 +36,12 @@ ActiveRecord::Schema.define(version: 20151216152853) do
     t.string   "last_name"
     t.string   "encrypted_password"
     t.string   "salt"
-    t.string   "roles",                            array: true
+    t.string   "roles",               default: [],              array: true
     t.string   "instagram_username"
     t.string   "company_name"
     t.string   "company_url"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
     t.integer  "posts_count"
     t.integer  "followed_by"
     t.integer  "follows"
