@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
   before_save :encrypt_password
   after_save :clear_password
 
+  validates :email, presence: true, uniqueness: true
+
   has_many :posts
 
   def self.authenticate(email, login_password)

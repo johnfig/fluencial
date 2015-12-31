@@ -10,6 +10,22 @@ describe User do
     end
   end
 
+  describe 'validations' do
+    context 'email' do
+      it 'has presence validation' do
+        user = build :user, email: ''
+        expect(user.save).to eq false
+      end
+
+      it 'has uniqueness validation' do
+        user = build :user, email: 'test@test.com'
+        user2 = build :user, email: 'test@test.com'
+        expect(user.save).to eq true
+        expect(user2.save).to eq false
+      end
+    end
+  end
+
   describe '.authenticate' do
     it 'returns user if the user authenticates with the correct username and password' do
       user = create :user
