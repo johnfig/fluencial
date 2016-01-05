@@ -28,4 +28,12 @@ FactoryGirl.define do
       end
     end
   end
+
+  factory :post do
+    instagram_id { SecureRandom.uuid }
+    low_resolution_url 'https://scontent.cdninstagram.com/hphotos-xtf1/t51.2885-19/11821765_426467924208095_1150540661_a.jpg'
+    standard_resolution_url 'https://scontent.cdninstagram.com/hphotos-xtf1/t51.2885-19/11821765_426467924208095_1150540661_a.jpg'
+    comments_count { rand(250..3000) }
+    likes_count { rand(5000..25000) }
+  end
 end
