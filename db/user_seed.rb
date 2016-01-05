@@ -45,7 +45,7 @@ class UserSeed < DevelopmentSeedBase
   end
 
   def self.reset
-    User.destroy_all
-    Post.destroy_all
+    User.delete_all
+    Post.delete_all
   end
 end
