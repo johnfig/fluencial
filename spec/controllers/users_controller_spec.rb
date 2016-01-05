@@ -43,6 +43,11 @@ describe UsersController do
       expect(assigns(:user)).to eq(user)
       expect(assigns(:user).posts).to match_array [post1, post2]
     end
+
+    it 'redirects to root_url if user is not found' do
+      get :show, {:id => 'blah'}, valid_session
+      expect(response).to redirect_to root_path
+    end
   end
 
   describe "GET new" do

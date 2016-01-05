@@ -7,7 +7,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.where(instagram_username: params[:id]).includes(:posts).first
+     #TODO make this redirect to 404 page in the future when you create and style one
+    redirect_to root_path unless @user = User.where(instagram_username: params[:id]).includes(:posts).first
   end
 
   def new
