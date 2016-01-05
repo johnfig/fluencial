@@ -1,0 +1,23 @@
+.post-wrapper
+  .l--regular.fog
+    .user-container
+      = image_tag @user.profile_picture_url, height: 300, width: 300
+      br
+      = "Name: #{@user.full_name}"
+      br
+      = "Instagram username: #{@user.instagram_username}"
+      br
+      = "Followers: #{@user.followed_by}"
+      br
+
+  .l--regular.fog
+    - @user.posts.each do |post|
+      .post-container
+        = image_tag post.low_resolution_url, width: 240, height: 240
+        br
+        = "Name: #{post.name}"
+        br
+        = "Likes: #{post.likes_count}"
+        br
+        = "Comments: #{post.comments_count}"
+        br

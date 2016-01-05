@@ -5,6 +5,7 @@ require 'database_cleaner'
 require 'factory_girl_rails'
 require 'vcr'
 require 'webmock/rspec'
+require 'capybara/rspec'
 
 VCR.configure do |c|
   c.cassette_library_dir = 'spec/fixtures/vcr_cassettes'
