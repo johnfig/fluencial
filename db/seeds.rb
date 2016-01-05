@@ -1,5 +1,3 @@
-require 'factory_girl'
-FactoryGirl.find_definitions unless FactoryGirl.factories.count > 0
+require_relative 'user_seed'
 
-10.times { FactoryGirl.create :user, :influencer }
-10.times { FactoryGirl.create :user, :advertiser }
+UserSeed.seed
