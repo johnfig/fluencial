@@ -18,7 +18,6 @@ gem 'awesome_print'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'httparty'
 gem 'gender_detector'
-gem 'factory_girl_rails', :require => false
 
 group :production do
   gem 'rails_12factor', group: :production
@@ -30,6 +29,7 @@ end
 
 group :development, :test do
   gem 'rspec', '~> 3.1'
+  gem 'factory_girl_rails', :require => false
   gem 'rspec-rails', '~> 3.1'
   gem 'pry', '~> 0.10.0'
   gem 'byebug', '~> 8.2', '>= 8.2.1'
