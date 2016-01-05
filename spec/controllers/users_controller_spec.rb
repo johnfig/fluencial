@@ -35,8 +35,12 @@ describe UsersController do
   describe "GET show" do
     it "assigns the requested user as @user" do
       user = User.create! valid_attributes
-      get :show, {:id => user.to_param}, valid_session
+      post1 = create :post, user: user
+      post2 = create :post, user: user
+      post3 = create :post
+      get :show, {:id => user.instagram_username}, valid_session
       expect(assigns(:user)).to eq(user)
+      expect(assigns(:user).posts).to match_array [post1, post2]
     end
   end
 

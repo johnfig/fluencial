@@ -20,13 +20,14 @@
   .l--regular.top-users
     h1 Top Users
     - @top_users.each do |user|
-      .user-container
-        = image_tag user.profile_picture_url, height: 150, width: 150
-        br
-        = "Name: #{user.full_name}"
-        br
-        = "Instagram username: #{user.instagram_username}"
-        br
-        = "Followers: #{user.followed_by}"
-        br
+      = link_to user_path(id: user.instagram_username) do
+        .user-container
+          = image_tag user.profile_picture_url, height: 150, width: 150
+          br
+          = "Name: #{user.full_name}"
+          br
+          = "Instagram username: #{user.instagram_username}"
+          br
+          = "Followers: #{user.followed_by}"
+          br
 
