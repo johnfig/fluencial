@@ -9,7 +9,7 @@ FactoryGirl.define do
 
     trait :influencer do
       sequence :instagram_username do |n|
-        "some_user_#{n}"
+        "user_#{n}"
       end
 
       access_token '13820659.67963d7.4e97faa1d48748889ddc637f8265fd31'
