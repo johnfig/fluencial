@@ -17,6 +17,7 @@ gem 'bcrypt-ruby', :require => 'bcrypt'
 gem 'awesome_print'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'httparty'
+gem 'gender_detector'
 
 group :production do
   gem 'rails_12factor', group: :production

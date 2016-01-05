@@ -1,12 +1,32 @@
 require 'rails_helper'
 
 describe User do
-  describe 'encryption' do
-    it 'encrypts a password after a user signs up' do
-      user = build :user
-      expect(user.password).to eq 'password'
-      user.save
-      expect(user.password).to eq nil
+  let(:user) { create :user }
+
+  describe 'callbacks' do
+    context 'encryption' do
+      it 'encrypts a password after a user signs up' do
+        user = build :user
+        expect(user.password).to eq 'password'
+        user.save
+        expect(user.password).to eq nil
+      end
+    end
+
+    describe 'set_gender' do
+      it 'sets gender before saving' do
+        user = build :user, first_name: 'John'
+        user.save
+        expect(user.gender).to eq 2
+
+        user = build :user, first_name: 'gabriella'
+        user.save
+        expect(user.gender).to eq 1
+
+        user = build :user, first_name: 'blah'
+        user.save
+        expect(user.gender).to eq 0
+      end
     end
   end
 
@@ -31,7 +51,6 @@ describe User do
 
   describe '.authenticate' do
     it 'returns user if the user authenticates with the correct username and password' do
-      user = create :user
       expect(User.authenticate(user.email, 'password')).to eq user
     end
   end
@@ -69,13 +88,11 @@ describe User do
 
   describe '#assign_role' do
     it 'assigns a role if no role exists' do
-      user = create :user
       user.assign_role('influencer')
       expect(user.roles).to eq ['influencer']
     end
 
     it 'adds another role if role exists' do
-      user = create :user
       user.assign_role('influencer')
       user.assign_role('admin')
       expect(user.roles).to eq ['influencer', 'admin']

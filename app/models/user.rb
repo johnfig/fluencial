@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   before_save :encrypt_password
-  after_save :clear_password
+  before_save :set_gender
+  after_save  :clear_password
 
   has_many :posts
 
@@ -43,5 +44,14 @@ class User < ActiveRecord::Base
 
   def clear_password
     self.password = nil
+  end
+
+  def set_gender
+    detector = GenderDetector.new(case_sensitive: false)
+    if detector.get_gender(self.first_name) == :female
+      self.gender = 1
+    elsif detector.get_gender(self.first_name) == :male
+      self.gender = 2
+    end
   end
 end
