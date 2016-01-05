@@ -5,7 +5,6 @@ class UserSeed < DevelopmentSeedBase
     super
 
     reset
-    FactoryGirl.create :user, :influencer
 
     female_profiles.each do |photo_url, name|
       user = FactoryGirl.create :user, :influencer, profile_picture_url: photo_url, first_name: name
@@ -31,6 +30,7 @@ class UserSeed < DevelopmentSeedBase
       ['http://f.cl.ly/items/3v0p1w0V372G1s0d1u40/Image%202016-01-04%20at%207.26.43%20PM.png', 'Renee'],
       ['http://f.cl.ly/items/1x3h3W132l050i2b2q0x/Image%202016-01-04%20at%207.31.28%20PM.png', 'Lippy'],
       ['http://f.cl.ly/items/1g182Z0l1R2v3B103f2k/Image%202016-01-04%20at%207.32.22%20PM.png', 'Sporty Spice'],
+      ['http://f.cl.ly/items/411E1U0A2S3k3x2U1f06/Image%202016-01-04%20at%206.59.27%20PM.png', 'Gabby'],
     ]
   end
 
@@ -46,5 +46,6 @@ class UserSeed < DevelopmentSeedBase
 
   def self.reset
     User.destroy_all
+    Post.destroy_all
   end
 end

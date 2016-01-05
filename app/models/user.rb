@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   before_save :set_gender
   after_save  :clear_password
 
-  has_many :posts
+  has_many :posts, dependent: :destroy
 
   scope :with_role, lambda { |role| where('? = ANY(roles)', role) }
   scope :most_followed, -> { order('followed_by DESC') }

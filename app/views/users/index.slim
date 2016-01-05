@@ -1,0 +1,15 @@
+.homepage-wrapper
+  .l--regular.top-users
+    h1 Top Users
+    - @users.each do |user|
+      = link_to user_path(id: user.instagram_username) do
+        .user-container
+          = image_tag user.profile_picture_url, height: 150, width: 150
+          br
+          = "Name: #{user.full_name}"
+          br
+          = "Username: #{user.instagram_username}"
+          br
+          = "Followers: #{user.followed_by}"
+          br
+

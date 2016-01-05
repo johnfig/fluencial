@@ -30,6 +30,15 @@ describe User do
     end
   end
 
+  describe 'associations' do
+    it 'has dependent destroy for posts' do
+      create :post, user: user
+      expect(Post.count).to eq 1
+      user.destroy
+      expect(Post.count).to eq 0
+    end
+  end
+
   describe 'scopes' do
     describe '.with_role' do
       it 'returns array of only specific roles' do

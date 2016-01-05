@@ -25,8 +25,9 @@ describe UsersController do
   let(:valid_session) { {} }
 
   describe "GET index" do
-    it "assigns all users as @users" do
-      user = User.create! valid_attributes
+    it "assigns all influencers as @users" do
+      user = create :user, :influencer
+      advertiser = create :user, :advertiser
       get :index, {}, valid_session
       expect(assigns(:users)).to eq([user])
     end
